@@ -29,20 +29,19 @@ public class searchPage {
 	WebElement selectDestinationFromList;
 
 	@FindBy(xpath = "//div[contains(@id, 'dateRangeInput-display-start-inner')]")
-	WebElement departureDate;
-	
+	WebElement departDate;
+
 	@FindBy(xpath = "//div[contains(@id,'-depart')]")
 	WebElement enterDepartDate;
-	
+
 	@FindBy(xpath = "//div[contains(@id,'dateRangeInput-display-end-inner')]")
 	WebElement ReturnDate;
-	
+
 	@FindBy(xpath = "//div[contains(@id,'-return')]")
 	WebElement enterReturnDate;
-	
+
 	@FindBy(xpath = "//button[contains(@title,'Search flights')]")
 	WebElement searchFlights;
-	
 
 	public searchPage(WebDriver driver) {
 		this.driver = driver;
@@ -50,55 +49,57 @@ public class searchPage {
 
 	}
 
-	public void enterOriginCity() {
-		originFlightContainer.click();
-		origin.sendKeys(Keys.BACK_SPACE);
-		origin.sendKeys(Keys.BACK_SPACE);
-		origin.sendKeys("OAK");
-		selectOriginFromList.click();
+	public void enterOriginCity(String Origin) {
+		Actions action = new Actions(driver);
+		action.click(originFlightContainer);
+		action.sendKeys(originFlightContainer, Keys.BACK_SPACE);
+		action.sendKeys(originFlightContainer, Keys.BACK_SPACE);
+		action.sendKeys(origin, Origin);
+		action.pause(2000);
+		action.sendKeys(Keys.ENTER);
+		action.perform();
 
 	}
 
-	public void enterDestinationCity() {
+	public void enterDestinationCity(String Destination) {
 		Actions action = new Actions(driver);
 		action.click(destinationFlightContainer);
-		action.pause(1000).build().perform();
+		action.sendKeys(destinationFlightContainer, Keys.BACK_SPACE);
+		action.sendKeys(destinationFlightContainer, Keys.BACK_SPACE);
 
-		action.sendKeys(destination, "Las Vegas");
-		action.pause(1000).build().perform();
-		action.click(selectDestinationFromList).build().perform();
-
-//		destinationFlightContainer.click();
-//		destination.sendKeys("Las Vegas");
-//		selectDestinationFromList.click();
+		action.sendKeys(destination, Destination).pause(2000);
+		action.sendKeys(Keys.ENTER).perform();
 
 	}
 
-	public void enterDepartureDate() {
+	public void enterDepartureDate(String departureDate) {
 		Actions action = new Actions(driver);
-		action.click(departureDate);
-		action.pause(1000).build().perform();
-		action.click(enterDepartDate).sendKeys(enterDepartDate, Keys.BACK_SPACE).build().perform();
-		//enterDepartDate.clear();
-		
-		action.sendKeys(enterDepartDate, "06/09/2020").build().perform();
-		
-		
+		action.click(departDate);
+		action.sendKeys(enterDepartDate, Keys.BACK_SPACE);
+		action.sendKeys(enterDepartDate, departureDate).pause(2000).build().perform();
 
 	}
 
-	public void enterReturnDate() {
+	public void enterReturnDate(String returndate) {
 		Actions action = new Actions(driver);
 		action.click(ReturnDate).build().perform();
-		action.sendKeys(enterReturnDate, Keys.BACK_SPACE).pause(2000).build().perform();
-		action.sendKeys(enterReturnDate, "06/22/2020").build().perform();
+		action.sendKeys(enterReturnDate, Keys.BACK_SPACE);
+		action.sendKeys(enterReturnDate, returndate).pause(2000).build().perform();
 
 	}
 
 	public void submit() {
+		String previousWindow = driver.getWindowHandle();
+		
 		searchFlights.click();
-		
-		
+		for (String winHandle : driver.getWindowHandles()) {
+			if (!winHandle.equals(previousWindow)) {
+				driver.switchTo().window(winHandle);
+				
+				break;
+			}
+		}
+
 	}
 
 }

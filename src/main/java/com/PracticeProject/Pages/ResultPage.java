@@ -1,7 +1,9 @@
 package com.PracticeProject.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,7 +14,8 @@ public class ResultPage {
 //	@FindBy(xpath = "//div[contains(text(),'Important messages:')]")
 //	WebElement closeDialogBox;
 	
-	@FindBy(xpath = "//div[contains(@id,'mainInfo')]")
+	@FindBy(xpath = "//div[contains(@aria-label,' number 1:')]")
+	//@FindBy(xpath="div[contains(@id, '-feature-score')]")
 	WebElement closeDialogBox;
 	
 	
@@ -25,7 +28,11 @@ public class ResultPage {
 	
 
 	public void closeAlert() {
-		closeDialogBox.click();
+		Actions actions = new Actions(driver);
+		actions.pause(2000)
+				.click(closeDialogBox)
+				.build()
+				.perform();
 
 	}
 
