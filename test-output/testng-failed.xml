@@ -6,7 +6,7 @@
       <class name="com.newProject.PracticeProject.TestSearchFlight">
         <methods>
           <include name="initiateDriver"/>
-          <include name="searchAFlight" invocation-numbers="0 1"/>
+          <include name="searchAFlight" invocation-numbers="0 1 2"/>
         </methods>
       </class> <!-- com.newProject.PracticeProject.TestSearchFlight -->
     </classes>
