@@ -16,7 +16,7 @@ public class TestSearchFlight  extends BaseTest {
 	
 	
 	@Test(dataProvider="getCellData")
-	public void searchAFlight(String Origin, String Destination, String departureDate, String returndate) throws AWTException, InterruptedException
+	public void searchAFlight(String Origin, String Destination, String departureDate, String returndate) throws  InterruptedException
  {
 		searchPage search=new searchPage(driver);
 		ResultPage result=new ResultPage(driver);
