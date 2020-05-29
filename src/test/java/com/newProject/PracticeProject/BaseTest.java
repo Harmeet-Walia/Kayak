@@ -10,7 +10,11 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class BaseTest {
+	
+	
 	WebDriver driver;
+	
+	
 	
 	
 	@BeforeMethod
@@ -21,7 +25,7 @@ public class BaseTest {
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\walia\\SeleniumDrivers\\chromedriver.exe");
 			driver=new ChromeDriver();
 			
-			driver.get("https://www.kayak.com/flights");
+			driver.get("http://www.kayak.com");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 //		} else if(browser.equals("FireFox")) {

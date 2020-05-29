@@ -15,6 +15,8 @@ import com.PracticeProject.Pages.searchPage;
 public class TestSearchFlight  extends BaseTest {
 	
 	
+	
+
 	@Test(dataProvider="getCellData")
 	public void searchAFlight(String Origin, String Destination, String departureDate, String returndate) throws  InterruptedException
  {
