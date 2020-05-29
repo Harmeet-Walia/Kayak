@@ -5,6 +5,8 @@
   <parameter name="browser" value="chrome"></parameter>
     <classes>
       <class name="com.newProject.PracticeProject.TestSearchFlight"/>
+      <class name="com.newProject.PracticeProject.TestFlightCovid19Options"/>
+      <class name="com.newProject.PracticeProject.TestStartPlanVacation"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
