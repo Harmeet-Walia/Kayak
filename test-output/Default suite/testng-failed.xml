@@ -5,6 +5,7 @@
     <classes>
       <class name="com.newProject.PracticeProject.TestStartPlanVacation">
         <methods>
+          <include name="testClickChicago"/>
           <include name="testClickOrlando"/>
           <include name="initiateDriver"/>
         </methods>
