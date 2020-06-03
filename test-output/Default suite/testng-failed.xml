@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.newProject.PracticeProject.TestStartPlanVacation">
+      <class name="com.newProject.PracticeProject.TestSearchCar">
         <methods>
-          <include name="testClickChicago"/>
-          <include name="testClickOrlando"/>
+          <include name="testCarSearch"/>
           <include name="initiateDriver"/>
         </methods>
-      </class> <!-- com.newProject.PracticeProject.TestStartPlanVacation -->
+      </class> <!-- com.newProject.PracticeProject.TestSearchCar -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

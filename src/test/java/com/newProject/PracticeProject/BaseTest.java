@@ -21,7 +21,7 @@ public class BaseTest {
 	@BeforeMethod
 	@Parameters("browser")
 	
-	public void initiateDriver(@Optional("FireFox")  String browser) throws Exception{
+	public void initiateDriver(@Optional("chrome")  String browser) throws Exception{
 		if(browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\SeleniumDrivers\\chromedriver.exe");
 			
