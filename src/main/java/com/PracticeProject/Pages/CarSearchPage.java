@@ -32,6 +32,17 @@ public class CarSearchPage {
 	@FindBy(xpath="//li[contains(text(), '2:00 pm')]")
 	WebElement select2PM;
 	
+	@FindBy(xpath="//div[contains(@id, '-dateRangeInput-display-end-inner')]")
+	WebElement endDateCarService;
+	
+	@FindBy(xpath="//div[contains(@id, '-dateRangeInput-end-time-select-display')]")
+	WebElement endTimeCarService;
+	
+	
+	@FindBy(xpath="//div[contains(@id, '-submit')]")
+	WebElement submit;
+	
+	
 	
 	
 	
@@ -70,5 +81,27 @@ public class CarSearchPage {
 		
 		
 	}
+	
+	public void enterEndDateCarService() {
+		Actions action=new Actions(driver);
+		action.click(endDateCarService).pause(2000).perform();
+		action.sendKeys(Keys.BACK_SPACE).sendKeys("06/10/2020").pause(2000).sendKeys(Keys.ENTER).build().perform();
+		
+	}
+	
+	public void enterEndTimeCarService() {
+		Actions action=new Actions(driver);
+		action.click(endTimeCarService).pause(2000).sendKeys(Keys.ENTER).build().perform();
+		
+		
+	}
+	
+	public void submit() {
+		Actions action=new Actions(driver);
+		action.click(submit).pause(2000).build().perform();
+		
+	}
+	
+	
 
 }
