@@ -1,11 +1,13 @@
 package com.PracticeProject.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class CarSearchPage {
 	
@@ -26,8 +28,15 @@ public class CarSearchPage {
 	
 	
 	
-	@FindBy(xpath="//div[contains(@id, '-dateRangeInput-start-time-select-display')]")
+	@FindBy(xpath="//div[contains(@id, '-dateRangeInput-start-time-select-list-wrapper')]")
 	WebElement clickOnTimePickUp;
+	//c5XXx-dateRangeInput-start-time-select-list
+	//c5XXx-dateRangeInput-start-time-select-list-wrapper
+	
+//	@FindBy(xpath="//ul[contains(@id, 'dateRangeInput-start-time-select-list')]")
+//	WebElements selectPickUpTime;
+	
+	
 	
 	@FindBy(xpath="//li[contains(text(), '2:00 pm')]")
 	WebElement select2PM;
@@ -59,39 +68,47 @@ public class CarSearchPage {
 		
 	}
 	
-	public void enterPickUpLocation() {
+	public void enterPickUpLocation(String pickUpLocation) {
 		Actions action=new Actions(driver);
 		action.click(clickOnPickUp);
 		action.sendKeys(Keys.BACK_SPACE).build().perform();
 		
-		action.sendKeys(pickUpInput, "Oakland").sendKeys(Keys.ENTER).pause(2000).build().perform();
+		action.sendKeys(pickUpInput, pickUpLocation).sendKeys(Keys.ENTER).pause(2000).build().perform();
 	}
 	
-	public void enterPickUpDate() {
+	public void enterPickUpDate(String dateForPickUp) {
 		Actions action=new Actions(driver);
 		action.click(clickOnPickUpDate).pause(2000).perform();
-		action.sendKeys(Keys.BACK_SPACE).sendKeys("06/08/2020").pause(2000).sendKeys(Keys.ENTER).sendKeys(Keys.ENTER).build().perform();
+		action.sendKeys(Keys.BACK_SPACE).sendKeys(dateForPickUp).pause(2000).sendKeys(Keys.ENTER).build().perform();
 		
 	}
 	 
-	public void selectPickUpTime() {
+	public void selectPickUpTime(String pickUpTime) throws InterruptedException {
+		
 		Actions action=new Actions(driver);
-		action.click(clickOnTimePickUp).pause(3000).click(select2PM).pause(3000).build().perform();
+		action.click(clickOnTimePickUp).pause(2000).sendKeys(pickUpTime).pause(2000).build().perform();
+		action.sendKeys(Keys.ENTER).build().perform();
+		//driver.findElement(By.xpath("//div[contains(@id, '_-dateRangeInput-start-time-select-list-wrapper')]/ul/li[contains(@id,'-dateRangeInput-start-time-select-option-4')]")).click();
+		Thread.sleep(2000);
+		
+//		Select select=new Select(driver.findElement(By.xpath("//ul[contains(@id, 'dateRangeInput-start-time-select-list')]")));
+//		select.selectByVisibleText("1:00 pm");
+		
 		
 		
 		
 	}
 	
-	public void enterEndDateCarService() {
+	public void enterEndDateCarService(String dropOffDate) {
 		Actions action=new Actions(driver);
 		action.click(endDateCarService).pause(2000).perform();
-		action.sendKeys(Keys.BACK_SPACE).sendKeys("06/10/2020").pause(2000).sendKeys(Keys.ENTER).build().perform();
+		action.sendKeys(Keys.BACK_SPACE).sendKeys(dropOffDate).pause(2000).sendKeys(Keys.ENTER).build().perform();
 		
 	}
 	
-	public void enterEndTimeCarService() {
+	public void enterEndTimeCarService(String dropOffTime) {
 		Actions action=new Actions(driver);
-		action.click(endTimeCarService).pause(2000).sendKeys(Keys.ENTER).build().perform();
+		action.click(endTimeCarService).sendKeys(dropOffTime).pause(2000).sendKeys(Keys.ENTER).build().perform();
 		
 		
 	}
